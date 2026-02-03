@@ -24,3 +24,33 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* GLOBAL MOBILE OPTIMIZATION */
+html, body {
+  /* Prevents double-tap to zoom and makes buttons feel more responsive */
+  touch-action: manipulation;
+  /* Prevents the page from "wiggling" horizontally on mobile */
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+}
+
+/* FIX SLIDERS (RANGE INPUTS) ON MOBILE */
+input[type="range"] {
+  /* Tells the browser: "I'll handle the touch, don't scroll the page" */
+  touch-action: none;
+  /* Prevents text selection while sliding */
+  user-select: none;
+  -webkit-user-select: none;
+  /* Removes default blue highlight on some mobile browsers */
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Increase the hit-box for the slider thumb (the part you grab) */
+input[type="range"]::-webkit-slider-thumb {
+  width: 28px !important;
+  height: 28px !important;
+  cursor: pointer;
+  appearance: none;
+  /* Helps with "grabbing" on mobile */
+  margin-top: -10px; 
+}

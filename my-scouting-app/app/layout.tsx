@@ -28,22 +28,21 @@ export default function RootLayout({
       <body className="bg-black text-white antialiased">
         {/* --- NAVIGATION BAR --- */}
         <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
-          <div className="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
-            <Link href="/" className="text-xl font-black tracking-tighter text-red-500">
-              Warbot Scouting: REBUILT
-            </Link>
-            
-            <div className="flex gap-6 text-sm font-bold uppercase tracking-wide text-gray-400">
-              <Link href="/scout" className="hover:text-white transition">Scout</Link>
-              <Link href="/pitscout" className="hover:text-white transition">Pit Scouting</Link>
-              <Link href="/analysis/matches" className="hover:text-white transition">Match Analysis</Link>
-              <Link href="/analysis/teams" className="hover:text-white transition">Team Analysis</Link>
-              <Link href="/analysis/pick-lists" className="hover:text-white transition">Pick List Maker</Link>
-
-              <Link href="/admin" className="hover:text-gray-200 text-gray-600 transition">Admin</Link>
-            </div>
-          </div>
-        </nav>
+  <div className="max-w-6xl mx-auto px-4 h-auto min-h-[4rem] flex flex-col md:flex-row items-center justify-between py-3 gap-4">
+    <Link href="/" className="text-xl font-black tracking-tighter text-red-500 whitespace-nowrap">
+      Warbot Scouting
+    </Link>
+    
+    {/* Use overflow-x-auto so users can swipe through links on small phones */}
+    <div className="flex gap-4 text-[10px] md:text-sm font-bold uppercase tracking-wide text-gray-400 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar">
+      <Link href="/scout" className="hover:text-white whitespace-nowrap">Scout</Link>
+      <Link href="/pitscout" className="hover:text-white whitespace-nowrap">Pit</Link>
+      <Link href="/analysis/matches" className="hover:text-white whitespace-nowrap">Matches</Link>
+      <Link href="/analysis/teams" className="hover:text-white whitespace-nowrap">Teams</Link>
+      <Link href="/analysis/pick-lists" className="hover:text-white whitespace-nowrap">Picks</Link>
+    </div>
+  </div>
+</nav>
 
         {/* --- PAGE CONTENT --- */}
         <main>{children}</main>
