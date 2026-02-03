@@ -38,7 +38,7 @@ export default function TeamDetailPage() {
 
         // Fetch pit scouting data
         // Use the same key used in your MatchSelector and PitScoutingPage
-        const competitionId = localStorage.getItem('scout_last_comp_id');
+        const competitionId =(localStorage.getItem('scout_last_comp_id'));
         console.log('Competition ID from localStorage:', competitionId);
         
         if (competitionId) {
@@ -219,21 +219,7 @@ export default function TeamDetailPage() {
           {/* Event Stats */}
           {teamStats && (
             <div className="bg-gray-900 border border-gray-800 rounded-xl p-4 space-y-3">
-              <h3 className="text-xs font-black text-gray-400 uppercase tracking-wider">Event Info</h3>
-              <div className="grid grid-cols-2 gap-3 text-sm">
-                <div className="flex justify-between bg-gray-800/50 p-2 rounded">
-                  <span className="text-gray-500">Event:</span>
-                  <span className="font-mono text-amber-400 text-xs">{teamStats.event_key}</span>
-                </div>
-                <div className="flex justify-between bg-gray-800/50 p-2 rounded">
-                  <span className="text-gray-500">Competition:</span>
-                  <span className="font-bold text-xs">{teamStats.competition_id}</span>
-                </div>
-                <div className="flex justify-between bg-gray-800/50 p-2 rounded col-span-2">
-                  <span className="text-gray-500">Capacity:</span>
-                  <span className="font-bold text-yellow-400">{teamStats.avg_hopper?.toFixed(1) || '0'}</span>
-                </div>
-              </div>
+              <h3 className="text-xs font-black text-gray-400 uppercase tracking-wider">Event: {teamStats.event_key}</h3>
             </div>
           )}
 

@@ -27,14 +27,14 @@ export default function RootLayout({
     <html lang="en">
       <body className="bg-black text-white antialiased">
         {/* --- NAVIGATION BAR --- */}
-        <nav className="sticky top-0 z-50 bg-black/80 backdrop-blur-md border-b border-gray-800">
-  <div className="max-w-6xl mx-auto px-4 h-auto min-h-[4rem] flex flex-col md:flex-row items-center justify-between py-3 gap-4">
-    <Link href="/" className="text-xl font-black tracking-tighter text-red-500 whitespace-nowrap">
+<nav className="sticky top-0 z-50 bg-black/90 backdrop-blur-md border-b border-gray-800">
+  <div className="max-w-6xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center justify-between gap-4">
+    <Link href="/" className="text-xl font-black tracking-tighter text-red-500 text-center sm:text-left">
       Warbot Scouting
     </Link>
     
     {/* Use overflow-x-auto so users can swipe through links on small phones */}
-    <div className="flex gap-4 text-[10px] md:text-sm font-bold uppercase tracking-wide text-gray-400 overflow-x-auto pb-2 md:pb-0 w-full md:w-auto no-scrollbar">
+    <div className="flex gap-4 text-[15px] font-bold uppercase tracking-wider text-gray-400 overflow-x-auto w-full sm:w-auto justify-center sm:justify-end pb-1 no-scrollbar">
       <Link href="/scout" className="hover:text-white whitespace-nowrap">Scout</Link>
       <Link href="/pitscout" className="hover:text-white whitespace-nowrap">Pit</Link>
       <Link href="/analysis/matches" className="hover:text-white whitespace-nowrap">Matches</Link>

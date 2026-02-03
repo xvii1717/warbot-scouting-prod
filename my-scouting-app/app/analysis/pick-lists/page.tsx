@@ -142,7 +142,7 @@ export default function PickListsPage() {
           <select 
             value={selectedCompId} 
             onChange={(e) => setSelectedCompId(e.target.value)}
-            className="bg-gray-900 border border-gray-800 p-2 rounded text-[10px] font-bold uppercase"
+            className="w-full max-w-[200px] bg-gray-900 border border-gray-800 p-2 rounded text-[10px] font-bold uppercase text-white truncate"
           >
             {competitions.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>

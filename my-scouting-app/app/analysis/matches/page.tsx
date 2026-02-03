@@ -93,14 +93,16 @@ export default function MatchAnalysisPage() {
             setSelectedCompId(e.target.value);
             localStorage.setItem('analysis_last_comp_id', e.target.value);
           }}
-          className="bg-gray-900 border border-gray-800 p-2 rounded text-[10px] font-bold uppercase tracking-widest outline-none focus:border-red-600 transition-colors"
+          className="w-full max-w-[200px] bg-gray-900 border border-gray-800 p-2 rounded text-[10px] font-bold uppercase text-white truncate"
         >
           {competitions.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
         </select>
       </div>
 
       <input 
-          type="text" 
+          type="number"
+          inputMode="decimal"
+          pattern="[0-9]*"
           placeholder="Search team number..."
           className="bg-gray-900 border border-gray-700 p-3 rounded-xl text-sm w-full md:w-80 focus:border-blue-500 outline-none"
           onChange={(e) => setSearchQuery(e.target.value)}

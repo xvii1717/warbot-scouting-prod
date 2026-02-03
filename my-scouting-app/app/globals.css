@@ -36,21 +36,22 @@ html, body {
 
 /* FIX SLIDERS (RANGE INPUTS) ON MOBILE */
 input[type="range"] {
-  /* Tells the browser: "I'll handle the touch, don't scroll the page" */
-  touch-action: none;
-  /* Prevents text selection while sliding */
-  user-select: none;
-  -webkit-user-select: none;
-  /* Removes default blue highlight on some mobile browsers */
-  -webkit-tap-highlight-color: transparent;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: pointer;
+  touch-action: none; /* Keeps the scrolling fix active */
 }
 
-/* Increase the hit-box for the slider thumb (the part you grab) */
+/* The Thumb (Circle) for Chrome, Safari, Edge, and Opera */
 input[type="range"]::-webkit-slider-thumb {
-  width: 28px !important;
-  height: 28px !important;
-  cursor: pointer;
+  -webkit-appearance: none; /* Overrides default square behavior */
   appearance: none;
-  /* Helps with "grabbing" on mobile */
-  margin-top: -10px; 
+  height: 28px;
+  width: 28px;
+  background-color: #ef4444; /* Match your red-500 theme */
+  border-radius: 50%; /* Force it back to a circle */
+  border: 2px solid #ffffff; /* Adds a crisp white ring */
+  box-shadow: 0 0 10px rgba(239, 68, 68, 0.4); /* Subtle glow */
+  margin-top: -10px; /* Aligns circle with the track */
 }

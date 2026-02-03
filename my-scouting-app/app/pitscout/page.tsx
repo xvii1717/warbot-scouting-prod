@@ -153,7 +153,7 @@ export default function PitScoutingPage() {
           <select 
             value={selectedCompId}
             onChange={(e) => {setSelectedCompId(e.target.value); resetForm();}}
-            className="bg-gray-900 text-[10px] font-bold border border-gray-700 rounded px-2 py-1 outline-none"
+            className="w-full max-w-[200px] bg-gray-900 border border-gray-800 p-2 rounded text-[10px] font-bold uppercase text-white truncate"
           >
             {competitions.map(c => <option key={c.id} value={c.id}>{c.name}</option>)}
           </select>
@@ -173,7 +173,9 @@ export default function PitScoutingPage() {
         <div className="bg-gray-900/50 p-6 rounded-3xl border border-gray-800 shadow-xl relative">
           <label className="block text-[10px] text-gray-500 uppercase tracking-widest mb-4">Target Team</label>
           <input 
-            type="text"
+            type="number"
+            inputMode="decimal"
+            pattern="[0-9]*"
             placeholder="Enter team number..."
             value={teamNumber}
             onChange={(e) => {
@@ -193,14 +195,14 @@ export default function PitScoutingPage() {
                 .slice(0, 10)
                 .map(t => (
                   <button
-                    key={t.team_number}
+                    key={t.team_number} 
                     onClick={() => {
                       setTeamNumber(t.team_number.toString());
                       setShowTeamDropdown(false);
                     }}
                     className="w-full text-left px-4 py-3 hover:bg-gray-700 border-b border-gray-700 last:border-b-0 text-xl font-bold text-blue-400 transition-colors"
                   >
-                    {t.team_number}
+                    {t.team_number + "-" + t.nickname}
                   </button>
                 ))}
               {teams.filter(t => t.team_number.toString().includes(teamNumber)).length === 0 && (

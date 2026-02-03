@@ -3,6 +3,7 @@
 import {useState, useEffect} from 'react';
 import {supabase} from '@/lib/supabase';
 
+
 export default function MatchSelector(){
     const [competitions, setCompetitions] = useState<any[]>([]);
     const [selectedCompId, setSelectedCompId] = useState<string>("");
@@ -138,6 +139,37 @@ export default function MatchSelector(){
       setSelectedCompId(comp);
     }
 
+    const increment = (setter: any, val: number) => {
+    setter(val + 1);
+    triggerHaptic('light');
+    };
+
+  const decrement = (setter: any, val: number) => {
+    if (val > 0) {
+      setter(val - 1);
+      triggerHaptic('medium');
+    }
+    };
+
+    const triggerHaptic = (type: 'light' | 'medium' | 'heavy' | 'success' = 'light') => {
+      if (typeof window !== 'undefined' && window.navigator.vibrate) {
+        switch (type) {
+          case 'light':
+            window.navigator.vibrate(10); // Quick blip
+            break;
+          case 'medium':
+            window.navigator.vibrate(30);
+            break;
+          case 'heavy':
+            window.navigator.vibrate(60);
+            break;
+          case 'success':
+            window.navigator.vibrate([20, 50, 20]); // Double tap
+            break;
+        }
+      }
+};
+
     if (loading) return <div className="p-10">Loading...</div>;
 
   // --- UI PART 1: THE SCORING FORM ---
@@ -173,21 +205,21 @@ export default function MatchSelector(){
 
 {/* --- AUTO SCORE --- */}
 <div className="bg-gray-900 p-6 rounded-2xl border border-gray-800">
-    <label className="block text-center mb-4 font-bold text-gray-400 uppercase text-xs">Auto Points (Estimate)</label>
+    <label className="block text-center mb-4 font-bold text-gray-400 uppercase text-xs">Auto Fuel (Estimate)</label>
     <div className="flex items-center justify-between">
-      <button onClick={() => setAutoScore(Math.max(0, autoScore - 1))} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">-</button>
+      <button onClick={() => decrement(setAutoScore, autoScore)} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">-</button>
       <span className="text-4xl font-black">{autoScore}</span>
-      <button onClick={() => setAutoScore(autoScore + 1)} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">+</button>
+      <button onClick={() => increment(setAutoScore, autoScore)} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">+</button>
     </div>
   </div>  
 
   {/* --- TELEOP SCORE --- */}
   <div className="bg-gray-900 p-6 rounded-2xl border border-gray-800">
-    <label className="block text-center mb-4 font-bold text-gray-400 uppercase text-xs">Teleop Points (Estimate) </label>
+    <label className="block text-center mb-4 font-bold text-gray-400 uppercase text-xs">Teleop Fuel (Estimate) </label>
     <div className="flex items-center justify-between">
-      <button onClick={() => setTeleopScore(Math.max(0, teleopScore - 1))} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">-</button>
+      <button onClick={() => decrement(setTeleopScore, teleopScore)} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">-</button>
       <span className="text-4xl font-black">{teleopScore}</span>
-      <button onClick={() => setTeleopScore(teleopScore + 1)} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">+</button>
+      <button onClick={() => increment(setTeleopScore, teleopScore)} className="bg-gray-800 h-16 w-16 rounded-xl text-2xl">+</button>
     </div>
   </div>
 
